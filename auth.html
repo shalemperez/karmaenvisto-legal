@@ -1,0 +1,22 @@
+<!doctype html><html lang="es"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Autorización — Karma en Visto</title>
+<body style="font-family:system-ui,Arial,sans-serif;max-width:680px;margin:60px auto;padding:0 18px;color:#111;text-align:center;line-height:1.6">
+<h1>Karma en Visto</h1>
+<p id="msg">Procesando autorización…</p>
+<pre id="code" style="background:#0b141a;color:#53bdeb;padding:18px;border-radius:10px;font-size:18px;word-break:break-all;display:none"></pre>
+<p id="hint" style="color:#555;display:none">Copia este código y pégalo en el script de autorización.</p>
+<script>
+  var q = new URLSearchParams(location.search);
+  var code = q.get('code'); var err = q.get('error');
+  if (code) {
+    document.getElementById('msg').textContent = '✅ Autorización exitosa. Tu código:';
+    var c = document.getElementById('code'); c.style.display='block'; c.textContent = code;
+    document.getElementById('hint').style.display='block';
+  } else if (err) {
+    document.getElementById('msg').textContent = '❌ Error de autorización: ' + err;
+  } else {
+    document.getElementById('msg').textContent = 'Esta página recibe el código de autorización de TikTok.';
+  }
+</script>
+</body></html>
